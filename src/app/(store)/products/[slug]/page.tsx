@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
+import { Metadata } from 'next'
 
 interface ProductProps {
   params: {
@@ -17,6 +18,18 @@ async function getProduct(slug: string): Promise<Product> {
   })
   const product = await response.json()
   return product
+}
+
+export async function generateMetadata({
+  params,
+}: ProductProps): Promise<Metadata> {
+  // Processo de memorização do react não vai permitir fazer
+  // 2 chamadas para a mesma rota,
+  // logo será feia uma vez só de forma transparente
+  const product = await getProduct(params.slug)
+  return {
+    title: product.title,
+  }
 }
 
 export default async function ProductPage({ params }: ProductProps) {
