@@ -9,7 +9,7 @@ export async function GET(
 
   const slug = z.string().parse(params.slug)
 
-  const product = data.products.find((procuct) => procuct.slug === slug)
+  const product = data.products.find((product) => product.slug === slug)
 
   if (!product) {
     return Response.json(
