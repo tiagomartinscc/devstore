@@ -1,5 +1,5 @@
 'use client'
-import { useCart } from '@/context/cart-context'
+import { useCart } from '@/contexts/cart-context'
 import { ShoppingBag } from 'lucide-react'
 export function CartWidget() {
   const { items } = useCart()

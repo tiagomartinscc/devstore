@@ -1,6 +1,6 @@
 'use client'
 
-import { useCart } from '@/context/cart-context'
+import { useCart } from '@/contexts/cart-context'
 
 export interface AddToCartButtonProps {
   productId: number
